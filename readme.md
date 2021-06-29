@@ -4,4 +4,4 @@ In this lesson we'll look at a microservices application utilizing [Express Gate
 
 [Component Diagram](https://drive.google.com/file/d/1AOFZuwlm8veRhAvvE36qr0prOPoWxDNR/view?usp=sharing)
 
-![Component Diagram](diagrams/lesson-microservices.png)
+![Component Diagram](diagrams/lesson-microservices.svg)
