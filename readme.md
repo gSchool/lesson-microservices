@@ -15,6 +15,21 @@ In this lesson we'll look at a microservices application utilizing [Express Gate
 
 1. `curl -i localhost:8080/carts`
 1. `curl -i localhost:8080/users`
+
+### Express Gateway (Express.js based API Gateway)
+1. `cd api-gateway`
 1. `docker build . -t <your-username>/express-gateway`
 1. `docker run -p 8080:8080 -d <your-username>/express-gateway`
+1. `docker logs <container-id>`
+
+### User Service
+1. `cd user-service`
+1. `docker build . -t <your-username>/user-service`
+1. `docker run -p 5020:5020 -d <your-username>/user-service`
+1. `docker logs <container-id>`
+### Shopping Cart Service
+
+1. `cd shopping-cart-service`
+1. `docker build . -t <your-username>/shopping-cart-service`
+1. `docker run -p 5010:5010 -d <your-username>/shopping-cart-service`
 1. `docker logs <container-id>`
