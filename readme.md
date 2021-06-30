@@ -13,8 +13,8 @@ In this lesson we'll look at a microservices application utilizing [Express Gate
 
 ## Useful commands
 
-1. curl -i localhost:8080/carts
-1. curl -i localhost:8080/users
-1. docker build . -t <your-username>/express-gateway 
-1. docker run -p 8080:8080 -d <your-username>/express-gateway
-1. docker logs <container-id>
+1. `curl -i localhost:8080/carts`
+1. `curl -i localhost:8080/users`
+1. `docker build . -t <your-username>/express-gateway`
+1. `docker run -p 8080:8080 -d <your-username>/express-gateway`
+1. `docker logs <container-id>`
