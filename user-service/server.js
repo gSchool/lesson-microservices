@@ -31,7 +31,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-const port = 5020;
+const port = 8080;
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });

@@ -13,9 +13,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/carts', router.get('/', function (req, res, next) {
+app.get('/carts', function (req, res, next) {
   res.send({ service: 'shopping-cart-service' });
-}));
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -33,7 +33,7 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-const port = 5010;
+const port = 8080;
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
