@@ -7,15 +7,18 @@ admin:
 apiEndpoints:
   users:
     host: localhost
-    path: /users
+    paths: /users
   carts:
     host: localhost
-    path: /carts
+    paths: /carts
+  all:
+    host: "*"
+    paths: "*"
 serviceEndpoints:
   users:
-    url: 'http://localhost:5020'
+    url: 'http://user-service:8080'
   carts:
-    url: 'http://localhost:5010'
+    url: 'http://shopping-cart-service:8080'
 policies:
   - basic-auth
   - cors
@@ -46,3 +49,10 @@ pipelines:
           - action:
               serviceEndpoint: carts 
               changeOrigin: true
+  logRequest:
+    apiEndpoints:
+      - all
+    policies:
+      - log:
+        - action:
+            message: "API Endpoint: ${apiEndpoint}, Request: ${JSON.stringify(req.headers)} - baseUrl: ${req.baseUrl} originalUrl: ${req.originalUrl} \n\n Response: ${res.app}"
