@@ -1,0 +1,21 @@
+version: "3.1"
+services: 
+    frontend:
+    
+    api-gateway:
+        image: 'cwarwick/api-gateway'
+        ports: 8080:8080
+
+    shopping-cart-service:
+        image: 'cwarwick/api-gateway'
+    shopping-cart-db:
+        image: 'mongo'
+        restart: always
+        environment:
+          MONGO_INITDB_ROOT_USERNAME: root
+          MONGO_INITDB_ROOT_PASSWORD: password
+
+    user-service:
+        image: 'cwarwick/api-gateway'
+    user-db:
+        image: 'postgres'
