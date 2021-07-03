@@ -37,3 +37,6 @@ services:
     user-db:
         container_name: user-service-db
         image: 'postgres'
+        restart: always
+        environment: 
+            POSTGRES_PASSWORD: password
