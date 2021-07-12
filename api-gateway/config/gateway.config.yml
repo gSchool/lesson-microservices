@@ -11,6 +11,9 @@ apiEndpoints:
   carts:
     host: localhost
     paths: /carts
+  inventory:
+    host: localhost
+    paths: /inventory  
   all:
     host: "*"
     paths: "*"
@@ -19,6 +22,8 @@ serviceEndpoints:
     url: 'http://user-service:8080'
   carts:
     url: 'http://shopping-cart-service:8080'
+  inventory:
+    url: 'http://inventory-service:8080'  
 policies:
   - basic-auth
   - cors
@@ -42,6 +47,16 @@ pipelines:
   carts:
     apiEndpoints:
       - carts
+    policies:
+    # Uncomment `key-auth:` when instructed to in the Getting Started guide.
+    # - key-auth:
+      - proxy:
+          - action:
+              serviceEndpoint: carts 
+              changeOrigin: true
+  inventory:
+    apiEndpoints:
+      - inventory
     policies:
     # Uncomment `key-auth:` when instructed to in the Getting Started guide.
     # - key-auth:

@@ -8,4 +8,4 @@ test("Renders a list of products", () => {
     let wrapper = shallow(<InventoryContainer products={products} />);
     const productComponents = wrapper.find(InventoryList);
     expect(productComponents.length).toEqual(1);
-})
+});
