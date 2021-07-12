@@ -17,7 +17,13 @@ services:
 
     api-gateway:
         container_name: api-gateway
-        image: 'cwarwick/api-gateway'
+        build:
+          context: api-gateway
+          dockerfile: Dockerfile
+        command: npm start
+        restart: always
+        volumes:
+          - './api-gateway:/app'
         ports: 
             - 8080:8080
 
@@ -29,8 +35,10 @@ services:
         command: npm start
         restart: always
         volumes:
-          - './backend:/app'
+          - './shopping-cart-service:/app'
         container_name: shopping-cart-service
+        ports:
+          - 3010:8080
 
     shopping-cart-service-db:
         container_name: shopping-cart-service-db
@@ -43,7 +51,15 @@ services:
 
     user-service:
         container_name: user-service
-        image: 'cwarwick/user-service'
+        build:
+          context: user-service
+          dockerfile: Dockerfile
+        command: npm start
+        restart: always
+        volumes:
+          - './user-service:/app'
+        ports:
+          - 3011:8080
 
     user-service-db:
         container_name: user-service-db
@@ -55,12 +71,19 @@ services:
 
     inventory-service:
         container_name: inventory-service
-        image: 'cwarwick/user-service' #todo: fix this!
+        build:
+          context: inventory-service
+          dockerfile: Dockerfile
+        command: npm start
+        restart: always
+        volumes:
+          - './inventory-service:/app'
+        ports:
+          - 3012:8080
 
     inventory-service-db:
         container_name: inventory-service-db
-        image: 'mongo'
+        image: 'postgres'
         restart: always
         environment:
-          MONGO_INITDB_ROOT_USERNAME: root
-          MONGO_INITDB_ROOT_PASSWORD: password
+          POSTGRES_PASSWORD: password

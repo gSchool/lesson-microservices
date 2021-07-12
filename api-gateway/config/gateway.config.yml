@@ -62,7 +62,7 @@ pipelines:
     # - key-auth:
       - proxy:
           - action:
-              serviceEndpoint: carts 
+              serviceEndpoint: inventory 
               changeOrigin: true
   logRequest:
     apiEndpoints:

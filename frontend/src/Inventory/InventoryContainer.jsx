@@ -6,7 +6,7 @@ const InventoryContainer = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
         const getProductsAsync = async () => {
-            const response = await fetch(config.apiGateway, + '/products');
+            const response = await fetch(config.apiGateway, + '/inventory');
             const products = await response.json();
             setProducts(products);
         }
