@@ -13,14 +13,12 @@ In this lesson we'll look at a microservices application utilizing [Express Gate
 
 ## Running the system
 
-### 1. Create the network
-1. `docker network create microservices-network`
+### Running the System
+1. `docker compose up --build`
 
-### 2. Express Gateway (Express.js based API Gateway)
-1. `cd api-gateway`
-1. `docker build . -t <your-username>/api-gateway`
-1. `docker run -p 8080:8080 --name api-gateway --network microservices-network -d <your-username>/api-gateway`
-1. `docker logs <container-id>`
+### API Gateway (Express.js)
+
+This is an _Edge Service_, meaning it allows network traffic from the outside world to reach the internal microservices on the private network.
 
 ### 3. User Service
 1. `cd user-service`

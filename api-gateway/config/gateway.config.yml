@@ -64,6 +64,11 @@ pipelines:
           - action:
               serviceEndpoint: inventory 
               changeOrigin: true
+      - cors:
+          - action:
+            origin: '*'
+            methods: '*'
+            allowedHeaders: '*'
   logRequest:
     apiEndpoints:
       - all

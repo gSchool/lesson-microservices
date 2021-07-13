@@ -9,18 +9,17 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    flexGrow: 1,
   },
   menuButton: {
-    alignSelf: 'right',
+    marginRight: theme.spacing(2),
   },
   title: {
+    flexGrow: 1,
   },
-  login:{
-      alignSelf: 'flex-end'
-  }
 }));
 
-export default function HeaderBar() {
+export default function ButtonAppBar() {
   const classes = useStyles();
 
   return (
@@ -33,7 +32,7 @@ export default function HeaderBar() {
           <Typography variant="h6" className={classes.title}>
             News
           </Typography>
-          <Button color="inherit" className={classes.login}>Login</Button>
+          <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
     </div>
