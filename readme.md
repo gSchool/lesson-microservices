@@ -30,3 +30,7 @@ This service tracks shopping carts in our system, each cart belongs to a user, a
 ### Inventory Service
 
 This service is responsible for managing our inventory, allowing products to be added and have their availability tracked.
+
+### Resources
+
+[Microsoft Microservices Architecture Style](https://docs.microsoft.com/en-us/azure/architecture/guide/architecture-styles/microservices)

@@ -78,8 +78,6 @@ services:
         restart: always
         volumes:
           - './inventory-service:/app'
-        ports:
-          - 3012:8080
 
     inventory-service-db:
         container_name: inventory-service-db
