@@ -20,15 +20,13 @@ In this lesson we'll look at a microservices application utilizing [Express Gate
 
 This is an _Edge Service_, meaning it allows network traffic from the outside world to reach the internal microservices on the private network.
 
-### 3. User Service
-1. `cd user-service`
-1. `docker build . -t <your-username>/user-service`
-1. `docker run -p 8081:8080 --name user-service --network microservices-network -d <your-username>/user-service`
-1. `docker logs <container-id>`
+### User Service
+This service is responsible for managing users in our systems, they may come from integrations with Salesforce, or any other User ingestion service. 
 
-### 4. Shopping Cart Service
+### Shopping Cart Service
 
-1. `cd shopping-cart-service`
-1. `docker build . -t <your-username>/shopping-cart-service`
-1. `docker run -p 8082:8080 --name shopping-cart-service --network microservices-network -d <your-username>/shopping-cart-service`
-1. `docker logs <container-id>`
+This service tracks shopping carts in our system, each cart belongs to a user, and this information can be used to send the specified owners of shopping carts special discounts.
+
+### Inventory Service
+
+This service is responsible for managing our inventory, allowing products to be added and have their availability tracked.
