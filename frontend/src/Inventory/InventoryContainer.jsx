@@ -1,33 +1,32 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import InventoryList from './InventoryList'
 import config from '../config.json'
+import Container from '@material-ui/core/Container';
 
-const InventoryContainer = () => {
-    console.log('config', config);
-    const [products, setProducts] = useState([]);
-    useEffect(() => {
-        const getProductsAsync = async () => {
-            try {
-                const response = await fetch(config.apiGateway + '/inventory');
-                console.log('response from /inventory', response);
-                const products = await response?.json();
-                console.log('json from /inventory', products);
+class InventoryContainer extends React.Component {
+    constructor() {
+        super()
+        this.state = { products: [] };
+    }
+    async componentDidMount() {
+        try {
+            const response = await fetch(config.apiGateway + '/inventory');
+            const products = await response?.json();
 
-                if (!Array.isArray(products)) throw new Error('inventory must be an array');
+            if (!Array.isArray(products)) throw new Error('inventory must be an array');
 
-                setProducts(products);
-            }
-            catch (err) {
-                console.error('failed to fetch inventory', err);
-            }
+            this.setState({ products: products });
         }
-        getProductsAsync();
-    }, [])
-    return (
-        <>
-            <InventoryList products={products} />
-        </>
-    )
+        catch (err) {
+            console.error('failed to fetch inventory', err);
+        }
+    }
+
+    render() {
+        return <Container variant="" >
+            <InventoryList products={this.state.products} />
+        </Container>
+    }
 }
 
 export default InventoryContainer

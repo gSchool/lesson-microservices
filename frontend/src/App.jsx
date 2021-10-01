@@ -1,14 +1,14 @@
 import './App.css';
 import HeaderBar from './HeaderBar';
 import InventoryContainer from './Inventory/InventoryContainer';
-
-function App() {
-  return (
-    <div className="App">
+import React from 'react'
+class App extends React.Component {
+  render() {
+    return <div className="App">
       <HeaderBar />
-      <InventoryContainer/>
+      <InventoryContainer />
     </div>
-  );
+  }
 }
 
 export default App;
