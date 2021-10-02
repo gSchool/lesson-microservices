@@ -1,13 +1,22 @@
 import React from 'react'
 import InventoryList from './InventoryList'
 import config from '../config.json'
-import Container from '@material-ui/core/Container';
+import Paper from '@material-ui/core/Paper';
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import { CardContent } from '@material-ui/core';
 
 class InventoryContainer extends React.Component {
     constructor() {
         super()
-        this.state = { products: [] };
+        this.state = {
+            products: [
+                { "id": 1, "name": "Tool belt" },
+                { "id": 2, "name": "Movie about Ants" }
+            ]
+        };
     }
+
     async componentDidMount() {
         try {
             const response = await fetch(config.apiGateway + '/inventory');
@@ -23,9 +32,16 @@ class InventoryContainer extends React.Component {
     }
 
     render() {
-        return <Container variant="" >
-            <InventoryList products={this.state.products} />
-        </Container>
+        return (
+            <Card sx={{ padding: 10 }}>
+                <CardHeader sx={{ padding: 10 }} title="Inventory" />
+                <CardContent>
+                    <Paper elevation={4}>
+                        <InventoryList products={this.state.products} />
+                    </Paper>
+                </CardContent>
+            </Card>
+        )
     }
 }
 
