@@ -4,7 +4,7 @@ import config from '../config.json'
 import Paper from '@material-ui/core/Paper';
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
-import { Button, CardContent } from '@material-ui/core';
+import { Button, CardContent, Container } from '@material-ui/core';
 
 class InventoryContainer extends React.Component {
     constructor() {
@@ -40,9 +40,9 @@ class InventoryContainer extends React.Component {
 
     render() {
         return (
-            <>
-                <Card>
-                    <CardHeader sx={{ margin: 10 }} title="Inventory" />
+            <Container>
+                <Card className='inventory-list-card'>
+                    <CardHeader title="Inventory" />
                     <CardContent>
                         <Paper elevation={4}>
                             <InventoryList products={this.state.products} />
@@ -51,7 +51,7 @@ class InventoryContainer extends React.Component {
                 </Card>
                 <Button variant='contained' onClick={() => this.doSomethingWithStateClicked()}>Do Something with State</Button>
                 <p>{`${this.state.something} ${this.state.incrementer}`}</p>
-            </>
+            </Container>
         )
     }
 }
