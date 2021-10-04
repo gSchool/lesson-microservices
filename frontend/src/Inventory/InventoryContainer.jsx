@@ -4,7 +4,7 @@ import config from '../config.json'
 import Paper from '@material-ui/core/Paper';
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
-import { CardContent } from '@material-ui/core';
+import { Button, CardContent } from '@material-ui/core';
 
 class InventoryContainer extends React.Component {
     constructor() {
@@ -13,7 +13,9 @@ class InventoryContainer extends React.Component {
             products: [
                 { "id": 1, "name": "Tool belt" },
                 { "id": 2, "name": "Movie about Ants" }
-            ]
+            ],
+            something: 'something',
+            incrementer: 0
         };
     }
 
@@ -31,16 +33,25 @@ class InventoryContainer extends React.Component {
         }
     }
 
+    doSomethingWithStateClicked() {
+        this.setState({ something: 'something else', incrementer: this.state.incrementer + 1 }, () => console.log('logging state after callback: ', this.state.incrementer))
+        console.log('logging state immediately after setState(): ', this.state.incrementer)
+    }
+
     render() {
         return (
-            <Card sx={{ padding: 10 }}>
-                <CardHeader sx={{ padding: 10 }} title="Inventory" />
-                <CardContent>
-                    <Paper elevation={4}>
-                        <InventoryList products={this.state.products} />
-                    </Paper>
-                </CardContent>
-            </Card>
+            <>
+                <Card>
+                    <CardHeader sx={{ margin: 10 }} title="Inventory" />
+                    <CardContent>
+                        <Paper elevation={4}>
+                            <InventoryList products={this.state.products} />
+                        </Paper>
+                    </CardContent>
+                </Card>
+                <Button variant='contained' onClick={() => this.doSomethingWithStateClicked()}>Do Something with State</Button>
+                <p>{`${this.state.something} ${this.state.incrementer}`}</p>
+            </>
         )
     }
 }
